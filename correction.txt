@@ -1,0 +1,2 @@
+1. svg абсолютный путь
+2. span vector's background's
