@@ -304,18 +304,42 @@
 }
 .slider {
   &-block{
+    overflow: hidden;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     background-color: #CCFF90;
 }
+
+  &-block__slides{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 100%;
+    flex-wrap: nowrap;
+    transition: left 0.8s ease 0s;
+    & > div{
+      flex: 0 0 750px;
+      height: 350px;
+    }
+    & > div:nth-child(even){
+      background-color: red;
+    }
+  }
+
   &-block__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     svg:first-child{
         margin-bottom: 20px;
     }
 }
   &-block__prev{
+    pointer-events: none;
     cursor: pointer;
     position: absolute;
     display: flex;
@@ -325,8 +349,10 @@
     height: 50px;
     background-color: rgba($color: #fff, $alpha: 0.85);
     border-radius: 5px;
+    top: 50%;
     left: 50px;
-
+    transform: translateY(-50%);
+    
     
     svg path{
         transition: all 0.3s ease 0s;
@@ -350,9 +376,10 @@
     height: 50px;
     background-color: rgba($color: #fff, $alpha: 0.85);
     border-radius: 5px;
+    top: 50%;
     right: 50px;
-    transform: rotate(-180deg);
-
+    transform: translateY(-50%) rotate(-180deg);
+   
     svg path{
         transition: all 0.3s ease 0s;
     }
@@ -380,8 +407,8 @@
         height: 2px;
     }
 
-    span:active{
-        background-color: rgba($color: #fff, $alpha: 1);
+    span.active{
+        background-color: rgba($color: #efa4a4, $alpha: 1);
     }
   }
   @media (max-width: 375.98px) {
