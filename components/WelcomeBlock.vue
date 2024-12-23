@@ -50,11 +50,21 @@ const slider = {
 	{
 		slides.value.style.left = left + 750 + 'px';
 		this.currentSlide -= 1;
+		this.paginationChange(this.currentSlide, slides);
 	},
 	slideNext(slides, left)
 	{
 		slides.value.style.left = left - 750 + 'px';
 		this.currentSlide += 1;
+		this.paginationChange(this.currentSlide, slides);
+	},
+	paginationChange(currentSlide)
+	{
+		for (const element of pagination.value.children)
+		{
+			element.classList.remove('active');
+		}
+		pagination.value.children[currentSlide].classList.add('active');
 	},
 };
 
